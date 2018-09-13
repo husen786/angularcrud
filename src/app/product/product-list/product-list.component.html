@@ -1,0 +1,50 @@
+<div class="card" style="margin-top:25px;">
+  <div class="card-header" style="background-color:skyblue;">
+    Product List
+  </div>
+  <div class="body">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              Filter By:<input type="text" class="form-control" [(ngModel)]="filterBy">
+              <p>Filter By:{{filterBy}}</p>
+              <a class="btn btn-primary" [routerLink]="['/products',0,'edit']">Add Prduct</a>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>productCode</th>
+                        <th>Rating</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let products of filteredProducts">
+                        <td>{{products.id}}</td>
+                        <td><a style="text-decoration:none;" [routerLink]="['/products',products.id]">{{products.productName}}</a></td>
+                        <td>{{products.productCode | space:'-'}}</td>
+                        <td><app-star [rating]="products.starRating"></app-star></td>
+                        <td><a class="btn btn-primary"
+                          [routerLink]="['/products',products.id,'edit']"
+                          >Edit</a></td>
+                        <td>
+                          <button class="btn btn-danger" (click)="deleteProduct(products.id)">Delete</button>
+                        </td>
+        
+                      </tr>
+                    </tbody>
+                  </table>
+        
+            </div>
+          </div>
+        </div>
+        
+  </div>
+</div>
+
+<div *ngIf='errorMessage'
+     class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>

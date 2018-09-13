@@ -1,0 +1,36 @@
+
+<div class="container">
+    <h1>Hero Form</h1>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+      <div class="form-group">
+        <label for="userr">userr</label>
+        <input type="text" class="form-control" id="userr"
+        (ngModel)="userr"
+        name="userr"
+        required
+         >
+         <p *ngIf="loginForm.controls.userr?.invalid && loginForm.controls.userr?.touched">required</p>
+      </div>
+ 
+      <div class="form-group">
+        <label for="userpassword">password</label>
+        <input type="password" class="form-control" id="userpassword"
+        (ngModel)="userpassword"
+        name="userpassword"
+        required
+        >
+        <p *ngIf="loginForm.controls.userpassword?.invalid && loginForm.controls.userpassword?.touched">required</p>
+      </div>
+ 
+      <button type="submit" class="btn btn-success"
+      [disabled]="!loginForm.valid"
+      
+      >Submit</button>
+ 
+    </form>
+</div>
+Invalid:{{loginForm.invalid}}
+Valid:{{loginForm.valid}}
+Touched:{{loginForm.touched}}
+Untouched:{{loginForm.untouched}}
+Pristine:{{loginForm.pristine}}

@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-header">
+    Product Edit {{products?.productName}}
+  </div>
+  <div class="card-body">
+    <form [formGroup]="productsForm" (ngSubmit)="saveProduct()">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" id="productName" 
+        formControlName="productName"
+        [ngClass]="{'is-invalid': (productsForm.get('productName').touched || productsForm.get('productName').dirty)
+      && !productsForm.get('productName').valid}"
+        >
+        <span class="invalid-feedback" *ngIf="productsForm.get('productName').errors?.required">
+          Product name is required
+        </span>
+        <span class="invalid-feedback" *ngIf="productsForm.get('productName').errors?.minlength">
+          Product name must be more than 3 letters
+        </span>
+        <span class="invalid-feedback" *ngIf="productsForm.get('productName').errors?.maxlength">
+          Product name muste be less than 20 letters
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="productCode">ProductCode</label>
+        <input type="text" class="form-control" id="productCode"
+        formControlName="productCode"
+        [ngClass]="{'is-invalid': (productsForm.get('productCode').touched || productsForm.get('productCode').dirty)
+      && !productsForm.get('productCode').valid}"
+        >
+        <span class="invalid-feedback" *ngIf="productsForm.get('productCode').errors?.required">
+          please enter product code
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description"
+        formControlName="description"
+        [ngClass]="{'is-invalid': (productsForm.get('description').touched || productsForm.get('description').dirty)
+      && !productsForm.get('description').valid}"
+        >
+        <span class="invalid-feedback" *ngIf="productsForm.get('description').errors?.required">
+          please enter the description
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="starRating">StarRating</label>
+        <input type="text" class="form-control" id="starRating"
+        formControlName="starRating"
+        [ngClass]="{'is-invalid': (productsForm.get('starRating').touched || productsForm.get('starRating').dirty)
+      && !productsForm.get('starRating').valid}"
+        >
+        <span class="invalid-feedback" *ngIf="productsForm.get('starRating').errors?.required">
+          please enter the star rating
+        </span>
+        <span class="invalid-feedback" *ngIf="productsForm.get('starRating').errors?.starRange">
+          Rating should be between 0-5
+        </span>
+      </div>
+      <button type="submit" class="btn btn-primary"
+      [disabled]="!productsForm.valid"
+      >Save</button>
+      <button class="btn btn-default" (click)="cancel()">Cancel</button>
+      
+    </form>
+  </div>
+</div>

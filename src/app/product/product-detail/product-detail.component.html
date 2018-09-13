@@ -1,0 +1,21 @@
+<div class="card" style="margin-top:30px">
+  <div class="card-header bg-black">
+    Product Detail
+  </div>
+  <div class="card-body">
+    <p>
+      <em>productName:</em>
+      {{products?.productName}}
+    </p>
+    <p>
+      <em>productCode:</em>
+      {{products?.productCode}}
+    </p>
+    <p><em>Description:</em>Description:{{products?.description}}
+    </p>
+    <ul>
+      <li><button class="btn btn-default" (click)="cancel()">Cancel</button></li>
+      <li><button class="btn btn-primary" >Edit</button></li>
+    </ul>
+  </div>
+</div>
